@@ -12,7 +12,6 @@ RSpec.describe 'Exchanges', type: :request do
     before do
       @amount = rand(1..9999)
     end
-
     it 'returns http success' do
       get '/convert', params: {
                       source_currency: "USD",
