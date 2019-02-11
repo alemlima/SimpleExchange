@@ -4,7 +4,8 @@
 # Just a test
 $(document).ready ->
  
-  $('form').submit ->
+ # $('form').submit ->
+  $('#amount').keyup ->
     if $('form').attr('action') == '/convert'
       $.ajax '/convert',
           type: 'GET'
