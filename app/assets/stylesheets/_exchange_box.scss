@@ -23,6 +23,21 @@
           background-color: #5bc0de;
           border-color: #5bc0de;
           border-radius: 0;
+          display: none;
+        }
+        .btn-inverter{
+          background-color: #0894b8;
+          border-color: #0894b8;
+          color: #f6f8fa;
+          font-weight: 700;
+          border-radius: 0;
+          margin-bottom: 10px;
+        }
+        .resultado{
+          color: #0894b8;
+          border-color: #000;
+          font-weight: 900;
+          font-size: 30pt;
         }
       }
     }
