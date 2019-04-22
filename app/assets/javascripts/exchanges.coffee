@@ -4,18 +4,33 @@
 # Just a test
 $(document).ready ->
  
-  $('form').submit ->
+ exchange = -> 
+  if $('#amount').val() == ''
+    $('#amount').focus()
+  else  
     if $('form').attr('action') == '/convert'
-      $.ajax '/convert',
-          type: 'GET'
-          dataType: 'json'
-          data: {
-                  source_currency: $("#source_currency").val(),
-                  target_currency: $("#target_currency").val(),
-                  amount: $("#amount").val()
-                }
-          error: (jqXHR, textStatus, errorThrown) ->
-            alert textStatus
-          success: (data, text, jqXHR) ->
-            $('#result').val(data.value)
+        $.ajax '/convert',
+            type: 'GET'
+            dataType: 'json'
+            data: {
+                    source_currency: $("#source_currency").val(),
+                    target_currency: $("#target_currency").val(),
+                    amount: $("#amount").val()
+                  }
+            error: (jqXHR, textStatus, errorThrown) ->
+              alert textStatus
+            success: (data, text, jqXHR) ->
+              $('#result').html(data.value)
         return false;
+        
+
+ timeout = 0
+ $('#amount').keyup ->
+  clearTimeout(timeout)
+  timeout = setTimeout(exchange, 1500)
+
+ $('#inverter').click ->
+  source = $('#source_currency').val()
+  $('#source_currency').val($('#target_currency').val())
+  $('#target_currency').val(source)
+  exchange()

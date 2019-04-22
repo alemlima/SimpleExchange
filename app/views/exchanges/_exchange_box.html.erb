@@ -9,27 +9,45 @@
       <%= form_tag('/convert', method: :get, id: 'exchange_form') do %>
         <div class='local_currency'>
           <div class='form-group'>
-            <p class='title'>Moeda Local</p>
+            <p class='title'>Moeda Local:</p>
             <%= select_tag 'source_currency', options_for_select(currency_list, 'BRL'), class: 'form-control', id: 'source_currency' %>
           </div>
- 
+
           <div class='form-group'>
-            <input type='number' name='amount' id='amount' class='form-control' placeholder='Quantidade ($10)' step='any' required>
+            <input type='number' name='amount' id='amount' class='form-control' placeholder='Valor' step='any' required>
           </div>
         </div>
                     
         <div class='destination_currency'>
           <div class='form-group'>
-            <p class='title'>Moeda Pretendida</p>
+            <p class='title'>Moeda Pretendida:</p>
             <%= select_tag 'target_currency', options_for_select(currency_list, 'EUR'), class: 'form-control', id: 'target_currency'%>
           </div>
-          <div class='form-group'>
-            <input type='text' id='result' name='result' class='form-control' placeholder='Resultado' readonly>
+          
+          <div>
+            <button type='button' id='inverter' class='btn  btn-secundary btn-inverter col-md-12' >Inverter Moedas</button>
           </div>
+        
+          
+          
+          <!--
+          <div class='form-group'>
+            <p class='title'>Resultado:</p>
+            <input type='text' id='result' name='result' class='resultado' placeholder='Resultado' readonly>
+            </div>
+           --> 
+          <div class='form-group'>
+            <p class='title'>Resultado:</p>
+            <div class= 'resultado text-center' id='result'></div>          
+          </div>
+           
         </div>
-        <div>
-          <button type='submit' class='btn btn-primary btn-exchange col-md-12'>CONVERTER</button>
-        </div>
+        
+        
+          <div>
+            <button type='submit' id='converter' class='btn btn-primary btn-exchange col-md-12' >CONVERTER</button>
+          </div>
+        
       <% end %>
     </div>
   </div>
